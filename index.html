@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./vue.js">
+    </script>
+</head>
+
+<body>
+<!--テンプレートここから。htmlを書いているわけではないことを認識する。2021/01/19-->
+<div id="app">
+    <!--data.messageではなく、シンプルにmessageとだけ書く。-->
+    <p>{{message}}</p>
+    <p v-text="message"></p>
+    <p>{{ number + 5 }}</p>
+    <p>{{ ok ? 'YES' : 'NO' }}</p>
+    <p>{{ sayHi() }}</p>
+    <button v-on:click="reverseMessage">
+        メッセージ反転
+    </button>
+</div>
+<!--テンプレートここまで-->
+</body>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'hello world!',
+            number: 3,
+            ok: true
+        },
+        methods: {
+            // メッセージ(message)を反転するメソッド
+            reverseMessage: function () {
+                this.message = this.message.split('').reverse().join('')
+            },
+            sayHi: function () {
+                // 自身のインスタンスのプロパティにアクセスするときは、必ずthis.とつける
+                return this.message;
+            }
+        }
+    })
+</script>
+
+</html>

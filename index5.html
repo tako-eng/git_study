@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./vue.js">
+    </script>
+</head>
+
+<body>
+<div id="app">
+    <!--    角カッコで囲うことで、動的にv-bindの引数を扱うことができる-->
+    <a :[attribute]="url">Google</a>
+    <!--    ちょっと冗長な書き方-->
+    <a :href="urlTwitter" :id="number">Twitter1</a>
+    <!-- まとめた書き方（最初からプロパティに全部かくやりかた）-->
+    <a v-bind="twitterObject">Twitter2</a>
+</div>
+</body>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            url: 'https://google.com',
+            urlTwitter: 'https://twitter.com',
+            number: 31,
+            attribute: 'href',
+            twitterObject:
+                {
+                    href: 'https://twitter.com',
+                    id: 31,
+                }
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./vue.js">
+    </script>
+</head>
+
+<body>
+<div id="app">
+<!--    誤り。普通に2重カッコのついたURLとして扱われてしまう-->
+    <a href="{{url}}">Google1</a>
+<!--    v-bindは引数を取る-->
+    <a v-bind:href="url">Google2</a>
+    <!--    v-bindは:以前を省略することができる-->
+    <a :href="url">Google3</a>
+
+</div>
+</body>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            url: 'https://google.com'
+        }
+    })
+</script>
+
+</html>

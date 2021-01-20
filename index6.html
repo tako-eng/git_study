@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./vue.js">
+    </script>
+</head>
+
+<body>
+<div id="app">
+    <p>現在{{number}}回クリックされています</p>
+<!--    v-onの場合はD引数にDOMイベント（なにをされたか）をいれる。例えばここではclickのこと。-->
+<!--    呼び出せるDOMイベントについては、https://developer.mozilla.org/ja/docs/Web/Events を参照のこと。-->
+<!--    メソッドを呼び出しする場合、カッコ()はつけてもつけなくても良いが、定義側で引数を受ける書き方をしている場合、
+ここで()のみだと下記みたいなエラーが発生する。。付けないほうが無難か？-->
+<!--    TypeError: Cannot read property 'clientX' of undefined-->
+    <buttton v-on:click="countUp()">カウントアップ</buttton>
+    <p v-on:mousemove="changeMousePosition">マウスを載せてください</p>
+    <p>X:{{x}}, Y:{{y}}</p>
+</div>
+</body>
+
+<script>
+    new Vue({
+        el: '#app',
+        // dataやmethodはvueインスタンスの中で固定のプロパティ
+        data: {
+            number: 0,
+            x:0,
+            y:0,
+        },
+        methods:{
+            countUp: function(){
+                this.number +=1
+            },
+            // 引数にeventを渡すことでeventオブジェクトを取得することができる。
+            // 引数はeventじゃなくても（たとえばtestでとかでも）動くが、eventを使うのが慣例である。
+            changeMousePosition: function(event){
+                this.x = event.clientX;
+                this.y = event.clientY;
+            },
+        }
+    })
+</script>
+
+</html>

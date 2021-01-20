@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./vue.js">
+    </script>
+</head>
+
+<body>
+<div id="app">
+<!--    これはタグごと表示される（テンプレート解析されない）-->
+    <div>{{html_}}</div>
+<!--    これはv-htmlタグを使っているので、タグの解析がされる。-->
+    <div v-html="html_"></div>
+</div>
+</body>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            html_ : '<h1>h1です</h1>'
+        }
+    })
+</script>
+
+</html>
