@@ -9,13 +9,9 @@
 
 <body>
 <div id="app">
-    <p>現在{{number}}回クリックされています</p>
-    <buttton v-on:click="countUp(3)">カウントアップ</buttton>
-    <p v-on:mousemove="changeMousePosition(3, $event)">マウスを載せてください
-<!--        めんどくさい書き方-->
-        <!--z    <span v-on:mousemove="noEvent">ここは反応しないでください。</span></p>-->
-    <span v-on:mousemove.stop="">ここは反応しないでください。</span></p>
-    <p>X:{{x}}, Y:{{y}}</p>
+<!--    <a v-on:click="noEvent" href="http://google.com">Google</a>-->
+    <a v-on:click.prevent="" href="http://google.com">Google</a>
+
 </div>
 </body>
 
@@ -28,15 +24,8 @@
             y:0,
         },
         methods:{
-            countUp: function(times){
-                this.number +=1 *times
-            },
-            changeMousePosition: function(divideNumber, event){
-                this.x = event.clientX / divideNumber;
-                this.y = event.clientY / divideNumber;
-            },
             noEvent: function(event){
-                event.stopPropagation()
+                event.preventDefault()
             }
         }
     })

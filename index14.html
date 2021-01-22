@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./vue.js">
+    </script>
+    <link rel="stylesheet" href="style14.css">
+</head>
+
+<body>
+<div id="app">
+    <!--    おさらい。v-bindは:以前を省略することができる-->
+    <h1 :class="classObject">Hello</h1>
+    <!--    おさらい。v-onは@(アットマーク)に置き換えることができる。-->
+    <button @click="isActive = !isActive">切り替え</button>
+</div>
+</body>
+
+<script>
+    new Vue
+    ({
+        el: '#app',
+        data: {
+            isActive: true
+        },
+        computed: {
+            classObject: function(){
+                return {
+                    red: this.isActive, //おさらい。データにアクセスするときはthisをつかうこと。
+                    'bg-blue': !this.isActive
+                }
+            }
+        }
+    })
+</script>
+
+</html>

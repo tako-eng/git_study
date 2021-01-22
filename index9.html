@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./vue.js">
+    </script>
+</head>
+
+<body>
+<div id="app">
+<!--    キー修飾子-->
+<!--    keyupはhtml側の機構で、キーを押して離したときにイベントを起こす、というもの。-->
+<!--    本来の書き方-->
+<!--    <input type="text" v-on:keyup="myAlert">-->
+
+    <!--  enterがキー修飾子にあたる。enterならenterボタン押下時にmyAlertが発火する。ほかにはspaceなども。  -->
+    <input type="text" v-on:keyup.enter="myAlert">
+
+</div>
+</body>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            number: 0,
+            x:0,
+            y:0,
+        },
+        methods:{
+            myAlert(){
+                alert('アラート');
+            }
+        }
+    })
+</script>
+
+</html>
