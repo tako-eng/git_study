@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./vue.js">
+    </script>
+</head>
+
+<!--    おさらい。v-bindは:以前を省略することができる-->
+<!--    おさらい。v-onは@(アットマーク)に置き換えることができる。-->
+<body>
+<div id="app">
+    <button @click="ok = !ok">ボタン</button>
+    <p v-if="ok">If</p>
+    <p v-show="ok">Show</p>
+</div>
+</body>
+
+<script>
+    new Vue
+    ({
+        el: '#app',
+        data: {
+            ok: true,
+        }
+    })
+</script>
+
+</html>
